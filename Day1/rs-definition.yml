@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica-set
+  labels:
+    app: myreplicaset
+    kind: frontend
+spec:
+  template:
+    metadata:
+      name: my-first-pod
+      labels:
+        app: myFirstPod
+        type: frontend
+    spec:
+      containers:
+        - name: 1st
+          image: nginx:alpine
+        - name: 2nd
+          image: redis
+        - name: 3rd
+          image: memcached
+  replicas: 5
+  selector:
+    matchLabels:
+      type: frontend
