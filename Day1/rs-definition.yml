@@ -14,12 +14,8 @@ spec:
         type: frontend
     spec:
       containers:
-        - name: 1st
-          image: nginx:alpine
-        - name: 2nd
-          image: redis
-        - name: 3rd
-          image: memcached
+        - name: nginx
+          image: nginx
   replicas: 5
   selector:
     matchLabels:
