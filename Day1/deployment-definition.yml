@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nginx-deploy
   labels:
-    app: mydeployment
+    app: nginxdeployment
     kind: frontend
 spec:
   template:
@@ -11,9 +11,10 @@ spec:
       name: nginx-deploy
       labels:
         app: web
+        type: frontend
     spec:
       containers:
-        - name: nginx
+        - name: nginx-deploy
           image: nginx:alpine
   replicas: 3
   selector:

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-deploy
+  labels:
+    app: busyboxdeployment
+    kind: frontend
+spec:
+  template:
+    metadata:
+      name: busybox-deploy
+      labels:
+        app: busyboxdeployment
+        type: frontend
+    spec:
+      containers:
+        - name: busybox-deploy
+          image: busybox
+          command:
+            - sleep
+            - "3600"
+          # Just spin & wait forever
+          #command: [ "/bin/bash", "-c", "--" ]
+          #args: [ "while true; do sleep 30; done;" ]
+  replicas: 3
+  selector:
+    matchLabels:
+      type: frontend

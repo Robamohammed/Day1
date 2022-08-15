@@ -12,4 +12,5 @@ spec:
     - name: redis
       image: redis
     - name: memcached
-      image: memcached      
+      image: memcached
+  
