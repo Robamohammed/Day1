@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy
+  labels:
+    app: webshop
+    kind: frontend
+    service: nginx
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      name: nginx-deploy
+      labels:
+        app: webshop
+        type: frontend
+    spec:
+      containers:
+        - name: nginx-deploy
+          image: nginx:1.8
+  replicas: 5
+  selector:
+    matchLabels:
+      type: frontend
